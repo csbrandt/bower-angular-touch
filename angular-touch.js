@@ -369,7 +369,7 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
       startTime = Date.now();
 
       var touches = event.touches && event.touches.length ? event.touches : [event];
-      var e = touches[0].originalEvent || touches[0];
+      var e = touches[0];
       touchStartX = e.clientX;
       touchStartY = e.clientY;
     });
@@ -387,7 +387,7 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
 
       var touches = (event.changedTouches && event.changedTouches.length) ? event.changedTouches :
           ((event.touches && event.touches.length) ? event.touches : [event]);
-      var e = touches[0].originalEvent || touches[0];
+      var e = touches[0];
       var x = e.clientX;
       var y = e.clientY;
       var dist = Math.sqrt( Math.pow(x - touchStartX, 2) + Math.pow(y - touchStartY, 2) );
