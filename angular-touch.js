@@ -370,8 +370,8 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
 
       var touches = event.touches && event.touches.length ? event.touches : [event];
       var e = touches[0];
-      touchStartX = e.clientX;
-      touchStartY = e.clientY;
+      touchStartX = e.clientX ? e.clientX : e.changedTouches[0].clientX;
+      touchStartY = e.clientY ? e.clientY : e.changedTouches[0].clientY;
     });
 
     element.on('touchmove', function(event) {
@@ -388,8 +388,8 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
       var touches = (event.changedTouches && event.changedTouches.length) ? event.changedTouches :
           ((event.touches && event.touches.length) ? event.touches : [event]);
       var e = touches[0];
-      var x = e.clientX;
-      var y = e.clientY;
+      var x = e.clientX ? e.clientX : e.changedTouches[0].clientX;
+      var y = e.clientY ? e.clientY : e.changedTouches[0].clientY;
       var dist = Math.sqrt( Math.pow(x - touchStartX, 2) + Math.pow(y - touchStartY, 2) );
 
       if (tapping && diff < TAP_DURATION && dist < MOVE_TOLERANCE) {
