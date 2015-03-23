@@ -396,9 +396,7 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
         // Call preventGhostClick so the clickbuster will catch the corresponding click.
         preventGhostClick(x, y);
 
-        // Blur the focused element (the button, probably) before firing the callback.
-        // This doesn't work perfectly on Android Chrome, but seems to work elsewhere.
-        // I couldn't get anything to work reliably on Android Chrome.
+        // focus the element that was tapped
         if (tapElement) {
           tapElement.focus();
         }
