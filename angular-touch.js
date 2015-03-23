@@ -305,8 +305,7 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
     event.preventDefault();
 
     // Blur focused form elements
-    //event.target && event.target.blur();
-    //event.currentTarget && event.currentTarget.blur();
+    event.target && event.target.blur();
   }
 
 
@@ -400,9 +399,10 @@ ngTouch.directive('ngClick', ['$parse', '$timeout', '$rootElement',
         // Blur the focused element (the button, probably) before firing the callback.
         // This doesn't work perfectly on Android Chrome, but seems to work elsewhere.
         // I couldn't get anything to work reliably on Android Chrome.
+        /*
         if (tapElement) {
           tapElement.blur();
-        }
+        }*/
 
         if (!angular.isDefined(attr.disabled) || attr.disabled === false) {
           element.triggerHandler('click', [event]);
